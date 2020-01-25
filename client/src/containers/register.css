@@ -6,3 +6,9 @@
   line-height: 1;
   font-family: "Aharoni Bold";
 }
+
+.a-answer {
+  line-height: 1;
+  padding: 0px;
+  border-radius: 5px;
+}

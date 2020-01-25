@@ -28,71 +28,34 @@ class CustomHeader extends Component {
     window.removeEventListener("resize", this.updateWindowDimensions);
   }
 
-  renderHeaderButtons() {
-    const { isAuthenticated } = this.props;
-    if (isAuthenticated) {
-      return (
-        <Row
-          style={{ height: "60px" }}
-          type="flex"
-          justify="space-between"
-          align="middle"
-        >
-          <Col>
-            <a className="a-logo" href="/">
-              <img alt="" src={logo} />
-            </a>
-          </Col>
-          <Col>
-            <button
-              className="button-menu-buttons"
-              style={{ color: GREY_1 }}
-              onClick={e => this.props.switchPopUpVisibility("menuButtons")}
-            >
-              <Icon type="menu" />
-            </button>
-          </Col>
-        </Row>
-      );
-    } else {
-      return (
-        <Row
-          style={{ height: "60px" }}
-          type="flex"
-          justify="space-between"
-          align="middle"
-        >
-          <Col>
-            <a className="a-logo" href="/">
-              <img alt="" src={logo} />
-            </a>
-          </Col>
-        </Row>
-      );
-    }
-  }
-
   render() {
     return (
       <Header
         style={{
-          background: "black",
+          background: "white",
           position: "fixed",
           zIndex: 2,
           width: "100%",
           height: "60px",
           lineHeight: "60px",
-          padding: "0px 0px"
+          padding: "0px 20px"
         }}
       >
-        {this.renderHeaderButtons()}
+        <Row
+          style={{ height: "60px" }}
+          type="flex"
+          justify="center"
+          align="middle"
+        >
+          <Col>
+            <a className="a-logo" href="/">
+              <img alt="" src={logo} />
+            </a>
+          </Col>
+        </Row>{" "}
       </Header>
     );
   }
-}
-
-function mapStateToProps(state) {
-  return {};
 }
 
 function mapDispatchToProps(dispatch) {
@@ -101,7 +64,10 @@ function mapDispatchToProps(dispatch) {
     dispatch
   );
 
-  const registerDispatchers = bindActionCreators(registerActionCreators, dispatch);
+  const registerDispatchers = bindActionCreators(
+    registerActionCreators,
+    dispatch
+  );
 
   return {
     updateWindowDimensions: (newWindowWidth, newWindowHeight) => {
@@ -117,6 +83,6 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(
-  mapStateToProps,
+  null,
   mapDispatchToProps
 )(CustomHeader);

@@ -30,7 +30,7 @@ class App extends Component {
       <Router history={history}>
         <Layout
           style={{
-            fontFamily: "Century Gothic Regular"
+            fontFamily: "Fenice"
           }}
         >
           {this.renderContent()}

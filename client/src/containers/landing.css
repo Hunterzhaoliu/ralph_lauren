@@ -4,8 +4,11 @@
   padding: 32px;
 }
 
-.h3-logged-in {
-  line-height: 1;
-  margin-bottom: 0;
-  padding-top: 60px;
+.h3-logo {
+  text-transform: uppercase;
+}
+
+.a-down {
+  box-shadow: none;
+  color: black;
 }

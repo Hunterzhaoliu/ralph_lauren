@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import * as registerActionCreators from "../actions/register";
-import { Layout, Row, Col } from "antd";
+import { Layout, Row, Col, Icon } from "antd";
+import Register from "./Register";
 import "./landing.css";
 
 import { GREY_0, GREY_8 } from "../styles/ColorConstants";
@@ -10,66 +11,61 @@ import { GREY_0, GREY_8 } from "../styles/ColorConstants";
 const { Content } = Layout;
 
 class Landing extends Component {
-  displayAuthentication() {
-    const { register } = this.props;
-    if (register.isAuthenticated) {
-      return <h3 className="h3-logged-in">You're Logged In!</h3>;
-    } else {
-      return (
-        <div>
-          <Row type="flex" justify="center" align="middle">
-            <Col
-              span={10}
+  renderRegistration() {
+    return (
+      <div>
+        <Row type="flex" justify="center" align="middle">
+          <Col
+            span={10}
+            style={{
+              paddingTop: "60px"
+            }}
+          >
+            <button
               style={{
-                paddingTop: "60px"
+                color: GREY_0,
+                background: GREY_8,
+                width: "100%"
               }}
+              onClick={e => this.props.switchPopUpVisibility("register")}
             >
-              <button
-                style={{
-                  color: GREY_0,
-                  background: GREY_8,
-                  width: "100%"
-                }}
-                onClick={e => this.props.switchPopUpVisibility("register")}
-              >
-                Create an account
-              </button>
-            </Col>
-          </Row>
-          <Row type="flex" justify="center" align="middle">
-            <Col span={10}>
-              <Row
-                type="flex"
-                justify="center"
-                align="middle"
-                style={{ paddingTop: 30 }}
-              >
-                <Col>
-                  <h5
-                    style={{
-                      color: GREY_8
-                    }}
-                  >
-                    Already registered?
-                  </h5>
-                </Col>
-                <Col offset={4}>
-                  <button
-                    style={{
-                      color: GREY_0,
-                      background: GREY_8
-                    }}
-                    onClick={e => this.props.switchPopUpVisibility("login")}
-                  >
-                    Log in
-                  </button>
-                </Col>
-              </Row>
-            </Col>
-          </Row>
-        </div>
-      );
-    }
+              Create an account
+            </button>
+          </Col>
+        </Row>
+        <Row type="flex" justify="center" align="middle">
+          <Col span={10}>
+            <Row
+              type="flex"
+              justify="center"
+              align="middle"
+              style={{ paddingTop: 30 }}
+            >
+              <Col>
+                <h5
+                  style={{
+                    color: GREY_8
+                  }}
+                >
+                  Already registered?
+                </h5>
+              </Col>
+              <Col offset={4}>
+                <button
+                  style={{
+                    color: GREY_0,
+                    background: GREY_8
+                  }}
+                  onClick={e => this.props.switchPopUpVisibility("login")}
+                >
+                  Log in
+                </button>
+              </Col>
+            </Row>
+          </Col>
+        </Row>
+      </div>
+    );
   }
 
   render() {
@@ -83,30 +79,46 @@ class Landing extends Component {
       >
         <Row
           style={{
-            paddingTop: "120px"
+            paddingTop: "30px"
           }}
           type="flex"
           justify="center"
           align="middle"
         >
-          <Col span={12}>
-            <h1>tech.LA Engineering Challenge</h1>
+          <Col>
+            <h3 className="h3-logo">Ralph Lauren</h3>
           </Col>
         </Row>
         <Row
           style={{
-            paddingTop: "60px"
+            paddingTop: "45px"
           }}
           type="flex"
           justify="center"
           align="middle"
         >
-          <Col span={12}>
-            <h3>User Registration Flow</h3>
+          <Col>
+            <h4>Customer Review</h4>
           </Col>
         </Row>
-        <Row type="flex" justify="center" align="middle">
-          <Col span={12}>{this.displayAuthentication()}</Col>
+        <Row
+          style={{
+            paddingTop: "45px"
+          }}
+          type="flex"
+          justify="center"
+          align="middle"
+        >
+          <Col>
+            <a className="a-down" href="#questionnaire">
+              <Icon style={{ fontSize: "18px", color: "black" }} type="down" />
+            </a>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <Register />
+          </Col>
         </Row>
       </Content>
     );

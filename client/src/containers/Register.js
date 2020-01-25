@@ -1,3 +1,4 @@
+import _ from "lodash";
 import React, { Component } from "react";
 import { bindActionCreators } from "redux";
 import * as registerActionCreators from "../actions/register";
@@ -5,8 +6,9 @@ import { connect } from "react-redux";
 import { Layout, Row, Col, Icon, Divider } from "antd";
 import InputField from "./input/InputField";
 import InputChoice from "./input/InputChoice";
+import options from "./input/options";
 
-import { GREY_0, GREY_5, GREY_8 } from "../styles/ColorConstants";
+import { GREY_0, GREY_4, GREY_8 } from "../styles/ColorConstants";
 import "./register.css";
 
 const { Content } = Layout;
@@ -15,11 +17,7 @@ class Register extends Component {
   constructor() {
     super();
     this.state = {
-      firstName: null,
-      lastName: null,
-      age: null,
-      gender: null,
-      errors: {}
+      score: null
     };
   }
 
@@ -37,26 +35,76 @@ class Register extends Component {
     }
   }
 
-  renderInput() {
-    const errors = this.state.errors;
+  renderAnswer(question, questionIndex, answerIndex) {
+    const imageWidth = "150px";
 
     return (
-      <div>
-        <Row style={{ paddingTop: 15 }} type="flex" justify="center">
-          <Col>
-            <InputField
-              value={this.state.firstName}
-              placeholder="First Name"
-              onChange={this.onChange}
-              hasError={false}
-              width={"350px"}
-              id="firstName"
-              type="string"
-            />
-          </Col>
-        </Row>
-      </div>
+      <Col span={11}>
+        <a
+          className="a-answer"
+          style={{
+            borderRadius: 10,
+            backgroundColor: GREY_0,
+            borderColor: GREY_0,
+            width: "100%"
+          }}
+          href={"#question" + String(answerIndex + 1)}
+        >
+          <img
+            style={{
+              width: imageWidth,
+              height: imageWidth
+            }}
+            alt=""
+            src={"./1.png"}
+          />
+        </a>
+      </Col>
     );
+  }
+
+  renderInput() {
+    const questionnaires = options.questionnaire;
+    return _.map(questionnaires, (question, questionIndex) => {
+      return (
+        <div key={questionIndex}>
+          <Row
+            style={{
+              padding: "30px 0px 0px 0px"
+            }}
+            type="flex"
+            justify="center"
+            align="middle"
+          >
+            <h4 id={"question" + String(questionIndex)}>{question.ask}</h4>
+          </Row>
+          <Row
+            style={{
+              padding: "30px 0px 0px 0px"
+            }}
+            type="flex"
+            justify="center"
+            align="middle"
+          >
+            {this.renderAnswer(question, questionIndex, 0)}
+            <Col span={1} />
+            {this.renderAnswer(question, questionIndex, 1)}
+          </Row>
+          <Row
+            style={{
+              padding: "30px 0px 0px 0px" // TRBL
+            }}
+            type="flex"
+            justify="center"
+            align="middle"
+          >
+            {this.renderAnswer(question, questionIndex, 3)}
+            <Col span={1} />
+            {this.renderAnswer(question, questionIndex, 4)}
+          </Row>
+        </div>
+      );
+    });
   }
 
   render() {
@@ -66,16 +114,16 @@ class Register extends Component {
       <Content
         style={{
           backgroundColor: GREY_0,
-          height: "100vh",
-          width: "100vw",
           textAlign: "center",
-          padding: "60px 0px 0px 0px"
+          padding: "45px 0px 0px 0px"
         }}
       >
-        <Row style={{ paddingTop: "60px" }} type="flex" justify="center">
+        <Row type="flex" justify="center">
           <Col>
-            <Divider style={{ color: GREY_5 }}>Register</Divider>
-            <Row style={{ paddingBottom: 10 }} type="flex" justify="center">
+            <Divider id="questionnaire" style={{ color: GREY_4 }}>
+              Questionnaire
+            </Divider>
+            <Row type="flex" justify="center">
               <Col span={22}>
                 {this.renderInput()}
                 <Row style={{ paddingTop: 30 }} type="flex" justify="center">
