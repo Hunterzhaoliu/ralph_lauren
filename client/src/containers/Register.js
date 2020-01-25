@@ -17,12 +17,17 @@ class Register extends Component {
   constructor() {
     super();
     this.state = {
-      score: null
+      email: null,
+      score: 0
     };
   }
 
-  onChange = e => {
-    this.setState({ [e.target.id]: e.target.value });
+  onSelectAnswer = e => {
+    this.setState({ score: this.state.score + 3 });
+  };
+
+  onChangeEmail = e => {
+    this.setState({ [e.target.id]: [e.target.value] });
   };
 
   renderSaveIcon(saveState) {
@@ -39,16 +44,15 @@ class Register extends Component {
     const imageWidth = "150px";
 
     return (
-      <Col span={11}>
+      <Col>
         <a
           className="a-answer"
           style={{
-            borderRadius: 10,
             backgroundColor: GREY_0,
-            borderColor: GREY_0,
-            width: "100%"
+            borderColor: GREY_0
           }}
-          href={"#question" + String(answerIndex + 1)}
+          href={"#question" + String(questionIndex + 1)}
+          onClick={answerIndex => this.onSelectAnswer(answerIndex)}
         >
           <img
             style={{
@@ -56,7 +60,7 @@ class Register extends Component {
               height: imageWidth
             }}
             alt=""
-            src={"./1.png"}
+            src={question.imageSources[answerIndex]}
           />
         </a>
       </Col>
@@ -67,40 +71,39 @@ class Register extends Component {
     const questionnaires = options.questionnaire;
     return _.map(questionnaires, (question, questionIndex) => {
       return (
-        <div key={questionIndex}>
-          <Row
-            style={{
-              padding: "30px 0px 0px 0px"
-            }}
-            type="flex"
-            justify="center"
-            align="middle"
-          >
-            <h4 id={"question" + String(questionIndex)}>{question.ask}</h4>
+        <div
+          style={{
+            padding: "60px 0px 0px 0px"
+          }}
+          id={"question" + String(questionIndex)}
+          key={questionIndex}
+        >
+          <Row type="flex" justify="center" align="middle">
+            <h4>{question.ask}</h4>
           </Row>
           <Row
             style={{
-              padding: "30px 0px 0px 0px"
+              padding: "15px 0px 0px 0px"
             }}
             type="flex"
             justify="center"
             align="middle"
           >
             {this.renderAnswer(question, questionIndex, 0)}
-            <Col span={1} />
+            <div style={{ width: "5px" }} />
             {this.renderAnswer(question, questionIndex, 1)}
           </Row>
           <Row
             style={{
-              padding: "30px 0px 0px 0px" // TRBL
+              padding: "5px 0px 0px 0px" // TRBL
             }}
             type="flex"
             justify="center"
             align="middle"
           >
+            {this.renderAnswer(question, questionIndex, 2)}
+            <div style={{ width: "5px" }} />
             {this.renderAnswer(question, questionIndex, 3)}
-            <Col span={1} />
-            {this.renderAnswer(question, questionIndex, 4)}
           </Row>
         </div>
       );
@@ -124,18 +127,32 @@ class Register extends Component {
               Questionnaire
             </Divider>
             <Row type="flex" justify="center">
-              <Col span={22}>
+              <Col>
                 {this.renderInput()}
-                <Row style={{ paddingTop: 30 }} type="flex" justify="center">
+                <Row
+                  id="question6"
+                  style={{ paddingTop: 30 }}
+                  type="flex"
+                  justify="center"
+                >
                   <Col>
+                    <InputField
+                      value={this.state.email}
+                      label="Email:"
+                      errorMessage="Email must be filled and be a valid email."
+                      hasError={false}
+                      onChange={this.onChangeEmail}
+                      width={"300px"}
+                      id="email"
+                      type="email"
+                    />
                     <button
                       className="button-register-save"
-                      onClick={
-                        () =>
-                          this.props.register(
-                            register.mongoDBUserId,
-                            JSON.parse(JSON.stringify(this.state))
-                          ) // need to send copy of state
+                      onClick={() =>
+                        this.props.registerUser(
+                          this.state.email,
+                          this.state.score
+                        )
                       }
                     >
                       Save {this.renderSaveIcon(register.saveState)}
@@ -165,8 +182,8 @@ function mapDispatchToProps(dispatch) {
   );
 
   return {
-    register: (mongoDBUserId, register) => {
-      registerDispatchers.register(mongoDBUserId, register);
+    registerUser: (email, score) => {
+      registerDispatchers.registerUser(email, score);
     }
   };
 }

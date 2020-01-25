@@ -1,6 +1,5 @@
 import {
   SWITCH_POP_UP_VISIBILITY,
-  SAVE_REGISTER_ERRORS,
   REGISTER_START,
   SUCCESSFULLY_REGISTERED,
   REGISTER_ERROR
@@ -33,9 +32,6 @@ export default function(state = initialState, action) {
         newState.registerIsVisible = false;
         newState.loginIsVisible = false;
       }
-      return newState;
-    case SAVE_REGISTER_ERRORS:
-      newState.registerErrors = action.registerErrors;
       return newState;
     case REGISTER_START:
       newState.saveState = "start";

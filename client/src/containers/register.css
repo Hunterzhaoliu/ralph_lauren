@@ -10,5 +10,8 @@
 .a-answer {
   line-height: 1;
   padding: 0px;
+}
+
+.a-answer img {
   border-radius: 5px;
 }

@@ -3,7 +3,8 @@ const { Schema } = mongoose;
 
 const userSchema = new Schema(
   {
-    email: String
+    email: String,
+    score: Number
   },
   {
     // allows for request.user.save()
