@@ -7,7 +7,7 @@ import "./result.css";
 
 import options from "./input/options";
 
-const randomColorIndex = Math.round(Math.random() * 6);
+const randomColorIndex = Math.round(Math.random() * 5);
 
 class Result extends Component {
   render() {
