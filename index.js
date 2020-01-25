@@ -1,5 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const bodyParser = require("body-parser");
+
 const keys = require("./config/keys");
 
 require("./models/User");
@@ -37,15 +39,8 @@ app.use(
     extended: false
   })
 );
-app.use(bodyParser.json());
 
-// extracts cookie data and deencrpts the data inside
-app.use(
-  cookieSession({
-    maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
-    keys: [keys.cookieKey] // encrypts the cookie (can provide multiple cookieKeys and then cookieSession randomly picks one)
-  })
-);
+app.use(bodyParser.json());
 
 require("./routes/registerRoutes")(app);
 

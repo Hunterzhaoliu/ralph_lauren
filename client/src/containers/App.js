@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Router, Route } from "react-router-dom";
 import { connect } from "react-redux";
 import CustomHeader from "./header/CustomHeader";
-import Registration from "./authentication/Registration";
+import Register from "./Register";
 import HeaderMenuButtons from "./header/HeaderMenuButtons";
 import Landing from "./Landing";
 import history from "./history";
@@ -12,7 +12,7 @@ class App extends Component {
   renderContent() {
     const { register } = this.props;
     if (register.registerIsVisible) {
-      return <Registration />;
+      return <Register />;
     } else if (register.menuButtonsIsVisible) {
       return <HeaderMenuButtons />;
     } else {
