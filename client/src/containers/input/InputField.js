@@ -3,13 +3,12 @@ import { connect } from "react-redux";
 import { Row, Col } from "antd";
 import ErrorMessage from "./ErrorMessage";
 import "./input-field.css";
-import { GREY_2 } from "../../styles/ColorConstants";
 
 class InputField extends Component {
   render() {
     const {
       value,
-      placeholder,
+      label,
       hasError,
       errorMessage,
       width,
@@ -31,8 +30,8 @@ class InputField extends Component {
               className="input-input-field"
               value={finalValue}
               onChange={this.props.onChange}
-              placeholder={placeholder}
-              style={{ width: width, borderColor: GREY_2 }}
+              placeholder={label}
+              style={{ width: width }}
               id={id}
               type={type}
             />

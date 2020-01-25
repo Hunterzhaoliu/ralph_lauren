@@ -10,8 +10,8 @@ let cloneObject = obj => {
 };
 
 let initialState = {
+  teamIsVisible: false,
   registerIsVisible: false,
-  registerErrors: {},
   menuButtonsIsVisible: false
 };
 
@@ -37,8 +37,7 @@ export default function(state = initialState, action) {
       newState.saveState = "start";
       return newState;
     case SUCCESSFULLY_REGISTERED:
-      newState.values = action.savedProfile;
-      newState.errors = action.profileErrors;
+      newState.teamIsVisible = true;
       newState.saveState = "done";
       return newState;
     case REGISTER_ERROR:

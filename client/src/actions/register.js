@@ -16,7 +16,9 @@ export const registerUser = (email, score) => async dispatch => {
     score: score
   };
 
-  const registerResponse = await axios.post("/register", user);
+  console.log("user = ", user);
+
+  const registerResponse = await axios.post("/api/register", user);
 
   if (registerResponse === "success") {
     dispatch({

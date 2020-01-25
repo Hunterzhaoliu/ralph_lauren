@@ -11,61 +11,38 @@ import { GREY_0, GREY_8 } from "../styles/ColorConstants";
 const { Content } = Layout;
 
 class Landing extends Component {
-  renderRegistration() {
-    return (
-      <div>
-        <Row type="flex" justify="center" align="middle">
-          <Col
-            span={10}
+  renderResult() {
+    const { register } = this.props;
+
+    if (register.teamIsVisible) {
+      return (
+        <div id="result">
+          <Row
             style={{
               paddingTop: "60px"
             }}
+            type="flex"
+            justify="center"
+            align="middle"
           >
-            <button
-              style={{
-                color: GREY_0,
-                background: GREY_8,
-                width: "100%"
-              }}
-              onClick={e => this.props.switchPopUpVisibility("register")}
-            >
-              Create an account
-            </button>
-          </Col>
-        </Row>
-        <Row type="flex" justify="center" align="middle">
-          <Col span={10}>
-            <Row
-              type="flex"
-              justify="center"
-              align="middle"
-              style={{ paddingTop: 30 }}
-            >
-              <Col>
-                <h5
-                  style={{
-                    color: GREY_8
-                  }}
-                >
-                  Already registered?
-                </h5>
-              </Col>
-              <Col offset={4}>
-                <button
-                  style={{
-                    color: GREY_0,
-                    background: GREY_8
-                  }}
-                  onClick={e => this.props.switchPopUpVisibility("login")}
-                >
-                  Log in
-                </button>
-              </Col>
-            </Row>
-          </Col>
-        </Row>
-      </div>
-    );
+            <Col>
+              <img
+                className="img-team"
+                alt=""
+                src="../images/pony_colors/5.png"
+              />
+            </Col>
+          </Row>
+          <Row type="flex" justify="center" align="middle">
+            <Col>
+              <h3>Welcome to Team</h3>
+              <h3 className="h3-red">RED</h3>
+              <h3>!</h3>
+            </Col>
+          </Row>
+        </div>
+      );
+    }
   }
 
   render() {
@@ -120,6 +97,7 @@ class Landing extends Component {
             <Register />
           </Col>
         </Row>
+        {this.renderResult()}
       </Content>
     );
   }
@@ -127,8 +105,7 @@ class Landing extends Component {
 
 function mapStateToProps(state) {
   return {
-    register: state.register,
-    windowWidth: state.customHeader.windowWidth
+    register: state.register
   };
 }
 

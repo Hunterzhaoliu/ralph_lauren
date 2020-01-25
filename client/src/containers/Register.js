@@ -17,7 +17,7 @@ class Register extends Component {
   constructor() {
     super();
     this.state = {
-      email: null,
+      email: "",
       score: 0
     };
   }
@@ -131,32 +131,38 @@ class Register extends Component {
                 {this.renderInput()}
                 <Row
                   id="question6"
-                  style={{ paddingTop: 30 }}
+                  style={{ paddingTop: 60 }}
                   type="flex"
                   justify="center"
                 >
                   <Col>
                     <InputField
                       value={this.state.email}
-                      label="Email:"
+                      label="Email"
                       errorMessage="Email must be filled and be a valid email."
                       hasError={false}
                       onChange={this.onChangeEmail}
-                      width={"300px"}
+                      width={300}
                       id="email"
                       type="email"
                     />
-                    <button
-                      className="button-register-save"
-                      onClick={() =>
-                        this.props.registerUser(
-                          this.state.email,
-                          this.state.score
-                        )
-                      }
-                    >
-                      Save {this.renderSaveIcon(register.saveState)}
-                    </button>
+                    <Row style={{ padding: "30px 0px 60px" }}>
+                      <Col>
+                        <a className="a-result" href={"#result"}>
+                          <button
+                            className="button-register-save"
+                            onClick={() =>
+                              this.props.registerUser(
+                                this.state.email[0],
+                                this.state.score
+                              )
+                            }
+                          >
+                            SAVE {this.renderSaveIcon(register.saveState)}
+                          </button>
+                        </a>
+                      </Col>
+                    </Row>
                   </Col>
                 </Row>
               </Col>
