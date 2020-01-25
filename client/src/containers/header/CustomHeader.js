@@ -3,10 +3,9 @@ import * as registerActionCreators from "../../actions/register";
 import * as customHeaderActionCreators from "../../actions/customHeader";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import { Layout, Row, Col, Icon } from "antd";
+import { Layout, Row, Col } from "antd";
 import "./custom-header.css";
 import logo from "../../images/logo.png";
-import { GREY_1 } from "../../styles/ColorConstants";
 const { Header } = Layout;
 
 class CustomHeader extends Component {

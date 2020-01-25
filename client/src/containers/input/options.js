@@ -61,7 +61,38 @@ export default {
       imageValues: ["sporty", "adventurous", "premium", "antique"]
     }
   ],
-  results: {
-    red: ""
-  }
+  results: [
+    [
+      "https://user-images.githubusercontent.com/24757872/73122611-f3e69880-3f54-11ea-8aad-f99b5f94d85b.png",
+      "yellow",
+      "rgb(233, 216, 25)"
+    ],
+    [
+      "https://user-images.githubusercontent.com/24757872/73122612-f3e69880-3f54-11ea-879d-0fa1c3b11781.png",
+      "orange",
+      "rgb(233, 128, 30)"
+    ],
+    [
+      "https://user-images.githubusercontent.com/24757872/73122613-f3e69880-3f54-11ea-8f84-cf8b2b7b83e4.png",
+      "blue",
+
+      "rgb(26, 213, 238)"
+    ],
+    [
+      "https://user-images.githubusercontent.com/24757872/73122614-f3e69880-3f54-11ea-9a07-cb8975ade682.png",
+      "purple",
+
+      "rgb(124, 9, 187)"
+    ],
+    [
+      "https://user-images.githubusercontent.com/24757872/73122615-f3e69880-3f54-11ea-8c4b-54c3107ea8d1.png",
+      "red",
+      "rgb(196, 26, 33)"
+    ],
+    [
+      "https://user-images.githubusercontent.com/24757872/73122616-f3e69880-3f54-11ea-888b-2d34e241dbe9.png",
+      "green",
+      "rgb(101, 225, 146)"
+    ]
+  ]
 };

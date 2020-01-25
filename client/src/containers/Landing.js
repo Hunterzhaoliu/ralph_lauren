@@ -6,45 +6,11 @@ import { Layout, Row, Col, Icon } from "antd";
 import Register from "./Register";
 import "./landing.css";
 
-import { GREY_0, GREY_8 } from "../styles/ColorConstants";
+import { GREY_0 } from "../styles/ColorConstants";
 
 const { Content } = Layout;
 
 class Landing extends Component {
-  renderResult() {
-    const { register } = this.props;
-
-    if (register.teamIsVisible) {
-      return (
-        <div id="result">
-          <Row
-            style={{
-              paddingTop: "60px"
-            }}
-            type="flex"
-            justify="center"
-            align="middle"
-          >
-            <Col>
-              <img
-                className="img-team"
-                alt=""
-                src="../images/pony_colors/5.png"
-              />
-            </Col>
-          </Row>
-          <Row type="flex" justify="center" align="middle">
-            <Col>
-              <h3>Welcome to Team</h3>
-              <h3 className="h3-red">RED</h3>
-              <h3>!</h3>
-            </Col>
-          </Row>
-        </div>
-      );
-    }
-  }
-
   render() {
     return (
       <Content
@@ -87,6 +53,18 @@ class Landing extends Component {
           align="middle"
         >
           <Col>
+            <h6>Scroll Down</h6>
+          </Col>
+        </Row>
+        <Row
+          style={{
+            paddingTop: "5px"
+          }}
+          type="flex"
+          justify="center"
+          align="middle"
+        >
+          <Col>
             <a className="a-down" href="#questionnaire">
               <Icon style={{ fontSize: "18px", color: "black" }} type="down" />
             </a>
@@ -97,16 +75,9 @@ class Landing extends Component {
             <Register />
           </Col>
         </Row>
-        {this.renderResult()}
       </Content>
     );
   }
-}
-
-function mapStateToProps(state) {
-  return {
-    register: state.register
-  };
 }
 
 function mapDispatchToProps(dispatch) {
@@ -123,6 +94,6 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(
-  mapStateToProps,
+  null,
   mapDispatchToProps
 )(Landing);

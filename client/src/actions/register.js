@@ -2,9 +2,9 @@ import axios from "axios";
 import {
   REGISTER_START,
   SUCCESSFULLY_REGISTERED,
-  REGISTER_ERROR
+  REGISTER_ERROR,
+  CLOSE_MODAL
 } from "./types";
-import history from "../containers/history";
 
 export const registerUser = (email, score) => async dispatch => {
   dispatch({
@@ -16,11 +16,9 @@ export const registerUser = (email, score) => async dispatch => {
     score: score
   };
 
-  console.log("user = ", user);
-
   const registerResponse = await axios.post("/api/register", user);
 
-  if (registerResponse === "success") {
+  if (registerResponse.status === 200) {
     dispatch({
       type: SUCCESSFULLY_REGISTERED
     });
@@ -29,4 +27,10 @@ export const registerUser = (email, score) => async dispatch => {
       type: REGISTER_ERROR
     });
   }
+};
+
+export const closeModal = () => async dispatch => {
+  dispatch({
+    type: CLOSE_MODAL
+  });
 };

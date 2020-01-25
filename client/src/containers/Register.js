@@ -5,10 +5,9 @@ import * as registerActionCreators from "../actions/register";
 import { connect } from "react-redux";
 import { Layout, Row, Col, Icon, Divider } from "antd";
 import InputField from "./input/InputField";
-import InputChoice from "./input/InputChoice";
 import options from "./input/options";
 
-import { GREY_0, GREY_4, GREY_8 } from "../styles/ColorConstants";
+import { GREY_0, GREY_4 } from "../styles/ColorConstants";
 import "./register.css";
 
 const { Content } = Layout;
@@ -148,19 +147,17 @@ class Register extends Component {
                     />
                     <Row style={{ padding: "30px 0px 60px" }}>
                       <Col>
-                        <a className="a-result" href={"#result"}>
-                          <button
-                            className="button-register-save"
-                            onClick={() =>
-                              this.props.registerUser(
-                                this.state.email[0],
-                                this.state.score
-                              )
-                            }
-                          >
-                            SAVE {this.renderSaveIcon(register.saveState)}
-                          </button>
-                        </a>
+                        <button
+                          className="button-register-save"
+                          onClick={() =>
+                            this.props.registerUser(
+                              this.state.email[0],
+                              this.state.score
+                            )
+                          }
+                        >
+                          SAVE {this.renderSaveIcon(register.saveState)}
+                        </button>
                       </Col>
                     </Row>
                   </Col>
