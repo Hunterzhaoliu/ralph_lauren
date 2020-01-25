@@ -10,7 +10,7 @@ let cloneObject = obj => {
 };
 
 let initialState = {
-  isResultVisible: true,
+  isResultVisible: false,
   registerIsVisible: false,
   menuButtonsIsVisible: false
 };
