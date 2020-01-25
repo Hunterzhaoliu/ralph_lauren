@@ -12,12 +12,7 @@ const randomColorIndex = Math.round(Math.random() * 5);
 class Result extends Component {
   render() {
     const { isResultVisible } = this.props;
-    console.log("options.results = ", options.results);
-    console.log("randomColorIndex = ", randomColorIndex);
     const poloArray = options.results[randomColorIndex];
-
-    console.log("poloArray = ", poloArray);
-    console.log("poloArray[0] = ", poloArray[0]);
 
     if (isResultVisible) {
       return (
@@ -57,7 +52,7 @@ class Result extends Component {
                   className="h5-welcome-color"
                   style={{ color: poloArray[2] }}
                 >
-                  {" " + poloArray[1]}
+                  {poloArray[1]}
                 </h5>
                 <h5 className="h5-welcome">!</h5>
               </Col>
