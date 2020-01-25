@@ -1,0 +1,14 @@
+.a-logo {
+  box-shadow: none;
+}
+
+.a-logo img {
+  width: 40px;
+}
+
+.button-menu-buttons {
+  background-color: inherit;
+  border-color: transparent;
+  font-size: 24px;
+  height: 60px;
+}

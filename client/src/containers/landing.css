@@ -1,0 +1,11 @@
+.content-overlay {
+  z-index: 3; /* z-index of customHeader is 2 */
+  background-color: white;
+  padding: 32px;
+}
+
+.h3-logged-in {
+  line-height: 1;
+  margin-bottom: 0;
+  padding-top: 60px;
+}
