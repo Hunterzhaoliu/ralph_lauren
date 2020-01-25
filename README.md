@@ -2,6 +2,16 @@
 
 Baker Retail 2020 Ideathon
 
+### Challenge
+
+- Propose one or more ideas on how Ralph Lauren can leverage technology to optimize
+  the in-store shopping and purchasing experience in-store. These ideas may relate
+  to how efficiently a customer can shop or how deeply the customer engages with
+  the brand.
+- Key Performance Indicators: Number of stores, store sales, cross-channel sales,
+  traffic volume, Average Uni Retail, Average Order Value
+- Final Slide Deck: https://docs.google.com/presentation/d/1WSnuvGSG6znXzs-hCjvNaSjv_jExUFCEL1rBCXIAstc/edit#slide=id.g6e192ea91d_0_395
+
 ### Code Setup
 
 1. `node -v` = v8.9.3 using `nvm` & `npm -v` = 5.6.0 with `npm install -g npm@5.6.0`
