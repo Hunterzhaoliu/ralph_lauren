@@ -22,7 +22,7 @@
     "json-stringify-safe": "^5.0.1",
     "mongoose": "^5.4.10",
     "nodemon": "^1.14.11",
-    "validator": "^10.9.0",
+    "validator": "^13.7.0",
     "webpack": "^3.6.0"
   }
 }
